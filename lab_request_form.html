@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Digital Dentistry Lab Request Form</title>
+
+<style>
+body{
+font-family:Arial;
+max-width:1200px;
+margin:auto;
+padding:20px;
+}
+
+.section{
+border:1px solid #ddd;
+padding:15px;
+margin-bottom:20px;
+border-radius:10px;
+}
+
+.required{
+color:red;
+}
+
+input,select,textarea{
+width:100%;
+padding:8px;
+margin-top:5px;
+margin-bottom:10px;
+}
+
+.note{
+background:#f5f5f5;
+padding:15px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Digital Dentistry Laboratory Request Form</h1>
+
+<div class="note">
+
+<b>Please complete all relevant info to avoid any delays and remakes</b>
+
+<br><br>
+
+<b>Crucial Notes for Implant Cases</b>
+
+<ol>
+<li>Clinicians must guarantee that scan bodies used clinically completely match the selected CAD library.</li>
+
+<li>Physical analogs and prosthetic screws for custom abutment fabrications must be supplied by the clinic.</li>
+
+<li>Periapical X-ray of transfer/scanbody seating is required.</li>
+
+</ol>
+
+</div>
+
+<div class="section">
+
+Doctor/Clinic
+<input id="doctor">
+
+WhatsApp
+<input id="whatsapp">
+
+Patient ID
+<input id="patient">
+
+</div>
+
+<div class="section">
+
+Service
+
+<select id="service">
+
+<option>Crown/Bridge</option>
+<option>Inlay/Onlay</option>
+<option>Veneer</option>
+<option>Crown on Ti-base</option>
+<option>Full Arch Zircon on Bar</option>
+<option>PFM</option>
+<option>Full Arch Zircon on Sleeves</option>
+<option>Titanium Frame with Zircon Crowns</option>
+<option>Bar Only</option>
+<option>Custom Titanium Abutment</option>
+<option>Custom Zircon Abutment</option>
+<option>Mockup</option>
+<option>Night Guard</option>
+<option>Implant Guide</option>
+
+</select>
+
+Material
+
+<select id="material">
+
+<option>PMMA</option>
+<option>Monolithic Zirconia</option>
+<option>Layered Zirconia</option>
+<option>E-max</option>
+<option>PFM</option>
+
+</select>
+
+Implant/Ti-base System
+<input id="implantSystem" required>
+
+Implant/Ti-base Line
+<input id="implantLine" required>
+
+Retention
+
+<select id="retention">
+
+<option>Cement-retained</option>
+<option>Screw-retained</option>
+
+</select>
+
+Connection
+
+<select id="connection">
+
+<option>Separate</option>
+<option>Connected</option>
+
+</select>
+
+VITA Shade
+
+<input id="shade">
+
+</div>
+
+<div class="section">
+
+Special Requirements
+
+<textarea id="notes"></textarea>
+
+</div>
+
+<button onclick="submitData()">
+Submit
+</button>
+
+<script>
+
+function submitData(){
+
+fetch("https://script.google.com/macros/s/AKfycbzvZPKi17VrCc-jPSjTm-CkGXM1m-qNredpSl454nqAC73OlEmeXvaatEc925dbKDwK/exec",{
+
+method:"POST",
+
+body:JSON.stringify({
+
+doctor:
+document.getElementById("doctor").value,
+
+whatsapp:
+document.getElementById("whatsapp").value,
+
+patient:
+document.getElementById("patient").value,
+
+service:
+document.getElementById("service").value,
+
+material:
+document.getElementById("material").value,
+
+implantSystem:
+document.getElementById("implantSystem").value,
+
+implantLine:
+document.getElementById("implantLine").value,
+
+retention:
+document.getElementById("retention").value,
+
+connection:
+document.getElementById("connection").value,
+
+shade:
+document.getElementById("shade").value,
+
+notes:
+document.getElementById("notes").value
+
+})
+
+})
+
+.then(()=>alert("Case submitted"))
+
+}
+
+</script>
+
+</body>
+</html>
